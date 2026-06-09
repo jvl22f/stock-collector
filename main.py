@@ -38,9 +38,11 @@ def run():
 
     if config.USE_RANKING:
         stocks = fetch_ranking(config.RANKING_TYPE, config.RANKING_COUNT)
+        mode = "ranking"
         log.info(f"ランキング取得: {config.RANKING_TYPE} Top{config.RANKING_COUNT} → {[s['name'] for s in stocks]}")
     else:
         stocks = config.STOCKS
+        mode = "stocks"
 
     results = []
 
@@ -59,8 +61,8 @@ def run():
         results.append({"stock_data": stock_data, "summary": summary})
         log.info(f"完了: {stock['name']}")
 
-    text_exp.export(results, today)
-    csv_exp.export(results, today)
+    text_exp.export(results, today, mode)
+    csv_exp.export(results, today, mode)
 
     log.info("===== 収集完了 =====")
 

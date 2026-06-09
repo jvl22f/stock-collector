@@ -4,8 +4,8 @@ import config
 
 
 class CsvExporter:
-    def export(self, results: list, date: str) -> Path:
-        path = Path(config.OUTPUT_DIR) / f"stocks_{date}.csv"
+    def export(self, results: list, date: str, mode: str = "stocks") -> Path:
+        path = Path(config.OUTPUT_DIR) / f"stocks_{mode}_{date}.csv"
 
         with open(path, "w", newline="", encoding="utf-8-sig") as f:
             writer = csv.writer(f)

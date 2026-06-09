@@ -10,7 +10,9 @@ class YahooFinanceCollector(BaseCollector):
             ticker = yf.Ticker(stock["code"])
             hist = ticker.history(period="2d")
 
-            if not hist.empty and len(hist) >= 1:
+            hist = hist.dropna(subset=["Close"])
+
+            if not hist.empty:
                 latest = hist.iloc[-1]
                 data.price = float(latest["Close"])
                 data.volume = int(latest["Volume"])

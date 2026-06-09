@@ -3,8 +3,8 @@ import config
 
 
 class TextExporter:
-    def export(self, results: list, date: str) -> Path:
-        path = Path(config.OUTPUT_DIR) / f"report_{date}.txt"
+    def export(self, results: list, date: str, mode: str = "stocks") -> Path:
+        path = Path(config.OUTPUT_DIR) / f"report_{mode}_{date}.txt"
 
         with open(path, "w", encoding="utf-8") as f:
             f.write(f"株式情報レポート　{date[:4]}/{date[4:6]}/{date[6:]}\n")
