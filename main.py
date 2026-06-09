@@ -7,6 +7,7 @@ import config
 from collectors.yahoo_finance import YahooFinanceCollector
 from collectors.google_news import GoogleNewsCollector
 from collectors.kabutan import KabutanCollector
+from collectors.kabutan_ranking import fetch_ranking
 from analyzers.gemini_analyzer import analyze_stock
 from exporters.text_exporter import TextExporter
 from exporters.csv_exporter import CsvExporter
@@ -35,9 +36,15 @@ def run():
     text_exp = TextExporter()
     csv_exp = CsvExporter()
 
+    if config.USE_RANKING:
+        stocks = fetch_ranking(config.RANKING_TYPE, config.RANKING_COUNT)
+        log.info(f"ランキング取得: {config.RANKING_TYPE} Top{config.RANKING_COUNT} → {[s['name'] for s in stocks]}")
+    else:
+        stocks = config.STOCKS
+
     results = []
 
-    for stock in config.STOCKS:
+    for stock in stocks:
         log.info(f"収集中: {stock['name']} ({stock['code']})")
 
         stock_data = yahoo.collect(stock)

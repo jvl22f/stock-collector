@@ -14,6 +14,11 @@ STOCKS = [
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 GEMINI_MODEL = "gemini-2.5-flash-lite"
 
+# ランキング収集
+USE_RANKING = True       # True: ランキングから銘柄を自動取得 / False: STOCKSリストを使用
+RANKING_TYPE = "値上がり率"  # "値上がり率" or "出来高急増"
+RANKING_COUNT = 5        # 取得する銘柄数
+
 # 出力先
 OUTPUT_DIR = "output"
 LOG_DIR = "logs"
