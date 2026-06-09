@@ -10,9 +10,9 @@ STOCKS = [
     {"code": "6758.T", "name": "ソニーグループ"},
 ]
 
-# Claude API
-ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
-CLAUDE_MODEL = "claude-opus-4-8"
+# Gemini API
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+GEMINI_MODEL = "gemini-2.5-flash-lite"
 
 # 出力先
 OUTPUT_DIR = "output"

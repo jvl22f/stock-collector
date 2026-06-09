@@ -7,7 +7,7 @@ import config
 from collectors.yahoo_finance import YahooFinanceCollector
 from collectors.google_news import GoogleNewsCollector
 from collectors.kabutan import KabutanCollector
-from analyzers.claude_analyzer import analyze_stock
+from analyzers.gemini_analyzer import analyze_stock
 from exporters.text_exporter import TextExporter
 from exporters.csv_exporter import CsvExporter
 
